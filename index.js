@@ -22,8 +22,7 @@ app.get('/random', function (req, res) {
     res.json(Math.floor((Math.random() * 100) + 1))
 })
 
-app.post('/IoT/:id', function (req, res) {
-    //let body = req.body;
+app.get('/IoT/:id', function (req, res) {
     let id = req.params.id
     res.json(data.findById(id))
 })
@@ -33,6 +32,11 @@ app.get('/IoT/:id/:state', function (req, res) {
     let state = req.params.state
     res.json(data.changeState(id, state))
 })
+
+/*app.post('/', function (req, res) {
+    let json = req.body
+    res.send('Add new ' + json.name + ' Completed!')
+})*/
 
 app.listen(port, function () {
     console.log('Starting IoTDCS on port ' + port)
