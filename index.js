@@ -20,6 +20,12 @@ app.get('/IoT/:id', function (req, res) {
     let id = req.params.id
     res.json(data.findById(id))
 })
+
+app.get('/IoT/:id/:state', function (req, res) {
+    let id = req.params.id
+    let state = req.params.state
+    res.json(data.changeState(id,state))
+})
  
 /*app.post('/', function (req, res) {
     let json = req.body
