@@ -1,0 +1,12 @@
+{
+  "name": "IoTDCS",
+  "version": "1.0.0",
+  "description": "It is a IoT Data centralize server.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
