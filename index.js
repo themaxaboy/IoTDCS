@@ -15,6 +15,10 @@ app.get('/', function (req, res) {
 app.get('/IoT', function (req, res) {
     res.json(data.findAll())
 })
+
+app.get('/random', function (req, res) {
+    res.json(Math.floor((Math.random() * 100) + 1))
+})
  
 app.get('/IoT/:id', function (req, res) {
     let id = req.params.id
