@@ -52,3 +52,13 @@ exports.findById = function (id) {
     if (id < IoT.length) return IoT[id]
     else return 'Not Found!'
 }
+
+exports.getStateById = function (id) {
+    if (id < IoT.length) return IoT[id].state
+    else return 'Not Found!'
+}
+
+exports.getValueById = function (id) {
+    if (id < IoT.length) return IoT[id].value
+    else return 'Not Found!'
+}

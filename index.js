@@ -5,10 +5,10 @@ const data = require('./datastore')
 const port = process.env.PORT || 4000
 
 const app = express()
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname))
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'))
+    res.sendFile(path.join(__dirname + '/index.html'))
 })
 
 app.get('/IoT', function (req, res) {
@@ -18,6 +18,16 @@ app.get('/IoT', function (req, res) {
 app.get('/IoT/:id', function (req, res) {
     let id = req.params.id
     res.json(data.findById(id))
+})
+
+app.get('/IoT/:id/state', function (req, res) {
+    let id = req.params.id
+    res.json(data.getStateById(id))
+})
+
+app.get('/IoT/:id/value', function (req, res) {
+    let id = req.params.id
+    res.json(data.getValueById(id))
 })
 
 app.get('/IoT/:id/state/:state', function (req, res) {
