@@ -1,25 +1,44 @@
-let IoT = [{
-        "id": 1,
-        "name": "Light",
-        "value": 0,
-        "state": true
+let IoT = [
+    {
+      "img": "https://semantic-ui.com/images/avatar2/small/matthew.png",
+      "name": "Light",
+      "description": "Outside",
+      "state": true,
+      "value": "-"
     },
     {
-        "id": 2,
-        "name": "Air",
-        "value": 0,
-        "state": false
+      "img": "https://semantic-ui.com/images/avatar2/small/lindsay.png",
+      "name": "Air",
+      "description": "Bedroom",
+      "state": false,
+      "value": "25 C"
+    },
+    {
+      "img": "https://semantic-ui.com/images/avatar2/small/mark.png",
+      "name": "Water Pump",
+      "description": "Outside",
+      "state": true,
+      "value": "500 Liter"
     }
-]
+  ]
 
 exports.changeState = function (id, state) {
-    if (id < IoT.length + 1 && (state == 'true' || state == 'false')) {
+    if (id < IoT.length && (state == 'true' || state == 'false')) {
         if (state == 'true') {
-            IoT[id - 1].state = true
+            IoT[id].state = true
         } else {
-            IoT[id - 1].state = false
+            IoT[id].state = false
         }
-        return IoT[id - 1].state
+        return 'Done!'
+    } else {
+        return 'Error!'
+    }
+}
+
+exports.changeValue = function (id, value) {
+    if (id < IoT.length) {
+        IoT[id].value = value
+        return 'Done!'
     } else {
         return 'Error!'
     }
@@ -30,7 +49,6 @@ exports.findAll = function () {
 }
 
 exports.findById = function (id) {
-    for (var i = 0; i < IoT.length; i++) {
-        if (IoT[i].id == id) return IoT[i].state
-    }
+    if (id < IoT.length) return IoT[id]
+    else return 'Not Found!'
 }

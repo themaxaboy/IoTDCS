@@ -1,25 +1,18 @@
 const express = require('express')
-const app = express()
 const path = require('path')
-const nocache = require('nocache')
-
 const data = require('./datastore')
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
-app.use(express.static(__dirname))
-app.use(nocache())
+const app = express()
+app.use(express.static(__dirname + '/public'))
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'))
+    res.sendFile(path.join(__dirname + '/public/index.html'))
 })
 
 app.get('/IoT', function (req, res) {
     res.json(data.findAll())
-})
-
-app.get('/random', function (req, res) {
-    res.json(Math.floor((Math.random() * 100) + 1))
 })
 
 app.get('/IoT/:id', function (req, res) {
@@ -27,10 +20,16 @@ app.get('/IoT/:id', function (req, res) {
     res.json(data.findById(id))
 })
 
-app.get('/IoT/:id/:state', function (req, res) {
+app.get('/IoT/:id/state/:state', function (req, res) {
     let id = req.params.id
     let state = req.params.state
     res.json(data.changeState(id, state))
+})
+
+app.get('/IoT/:id/value/:value', function (req, res) {
+    let id = req.params.id
+    let value = req.params.value
+    res.json(data.changeValue(id, value))
 })
 
 /*app.post('/', function (req, res) {
