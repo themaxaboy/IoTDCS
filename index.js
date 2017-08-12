@@ -1,11 +1,14 @@
 const express = require('express')
 const path = require('path')
 const data = require('./datastore')
+const nocache = require('nocache')
+
 
 const port = process.env.PORT || 4000
 
 const app = express()
 app.use(express.static(__dirname))
+app.use(nocache())
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'))
