@@ -83,6 +83,16 @@ exports.findAll = function () {
     return IoT
 }
 
+exports.getAllState = function () {
+    let allState = ''
+
+    IoT.forEach(function(element) {
+        allState += (element.state + 0) + ''
+    }, this);
+
+    return allState
+}
+
 exports.findById = function (id) {
     if (id < IoT.length) return IoT[id]
     else return 'Not Found!'

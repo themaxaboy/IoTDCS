@@ -17,6 +17,10 @@ app.get('/IoT', function (req, res) {
     res.json(data.findAll())
 })
 
+app.get('/IoT/state', function (req, res) {
+    res.json(data.getAllState())
+})
+
 app.get('/IoT/:id', function (req, res) {
     let id = req.params.id
     res.json(data.findById(id))
