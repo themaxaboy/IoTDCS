@@ -13,7 +13,7 @@ class Tbody extends Component {
   }
 
   componentDidMount() {
-    this.onUpdate()
+    setInterval(() => this.onUpdate(), 1000)
   }
 
   async handleClick(id,state) {
