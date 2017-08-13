@@ -107,3 +107,11 @@ exports.getValueById = function (id) {
     if (id < IoT.length) return IoT[id].value
     else return 'Not Found!'
 }
+
+exports.setValueById = function (id,value) {
+    if (id < IoT.length) {
+        IoT[id].value = value
+        return 'Set Value : '+ value + ' to IoT id : ' + id + ' Completed!'
+    }
+    else return 'Not Found!'
+}

@@ -1,11 +1,14 @@
 const express = require('express')
 const path = require('path')
-const data = require('./datastore')
+const datastore = require('./datastore')
 const nocache = require('nocache')
+const bodyParser = require('body-parser')
 
-const port = process.env.PORT || 4001
+const port = process.env.PORT || 4000
 
 const app = express()
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname)));
 app.use(nocache())
 
@@ -14,44 +17,45 @@ app.get('/', function (req, res) {
 });
 
 app.get('/IoT', function (req, res) {
-    res.json(data.findAll())
+    res.json(datastore.findAll())
 })
 
 app.get('/IoT/state', function (req, res) {
-    res.json(data.getAllState())
+    res.json(datastore.getAllState())
 })
 
 app.get('/IoT/:id', function (req, res) {
     let id = req.params.id
-    res.json(data.findById(id))
+    res.json(datastore.findById(id))
 })
 
 app.get('/IoT/:id/state', function (req, res) {
     let id = req.params.id
-    res.json(data.getStateById(id))
+    res.json(datastore.getStateById(id))
 })
 
 app.get('/IoT/:id/value', function (req, res) {
     let id = req.params.id
-    res.json(data.getValueById(id))
+    res.json(datastore.getValueById(id))
 })
 
 app.get('/IoT/:id/state/:state', function (req, res) {
     let id = req.params.id
     let state = req.params.state
-    res.json(data.changeState(id, state))
+    res.json(datastore.changeState(id, state))
 })
 
-app.get('/IoT/:id/value/:value', function (req, res) {
+/*app.get('/IoT/:id/value/:value', function (req, res) {
     let id = req.params.id
     let value = req.params.value
-    res.json(data.changeValue(id, value))
-})
-
-/*app.post('/', function (req, res) {
-    let json = req.body
-    res.send('Add new ' + json.name + ' Completed!')
+    res.json(datastore.changeValue(id, value))
 })*/
+
+app.post('/IoT/value/set', function(req, res) {
+    let id = req.body.id
+    let value = req.body.value
+    res.send(datastore.setValueById(id,value))
+});
 
 app.listen(port, function () {
     console.log('Starting IoTDCS on port ' + port)

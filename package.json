@@ -4,6 +4,7 @@
   "description": "It is a IoT Data centralize server.",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "nocache": "^2.0.0"
   },
