@@ -8,16 +8,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="ui grid">
-        <div className="sixteen wide column">
-          <center>
-
-            <Header topic="IoT Data Centralize Server"/>
-            <Table/>
-            <BtnAdd/>
-            <BtnDel/>
-
-          </center>
+      <div>
+        <Header topic="IoT Data Centralize Server"/>
+        <div className="ui grid centered">
+          <div className="sixteen wide column">
+              <center>
+              <p></p>
+              <p></p>
+              <p></p>
+              <Table/>
+              <BtnAdd/>
+              <BtnDel/>
+              </center>
+          </div>
         </div>
       </div>
     );

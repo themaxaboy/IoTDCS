@@ -5,8 +5,8 @@ class Header extends Component {
     let {topic} = this.props
     return (
       <div>
-            <br />
-            <h1>{topic}</h1>
+        <br/>
+        <center><h1>{topic}</h1></center>
       </div>
     );
   }
