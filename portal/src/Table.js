@@ -3,7 +3,6 @@ import Tbody from './Tbody'
 
 class Table extends Component {
   render() {
-    let {allDevice} = this.props
     return (
       <table className="ui very basic collapsing celled table unstackable">
         <thead>
@@ -15,7 +14,7 @@ class Table extends Component {
           </tr>
         </thead>
 
-        <Tbody rowData={allDevice}/>
+        <Tbody/>
 
       </table>
     );

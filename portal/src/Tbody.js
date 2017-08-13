@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Tbody extends Component {
-  handleClick(id,state) {
-    console.log('this is:', id);
-    console.log('this is:' + state);
+  state = {
+    data: []
+  }
+
+  onUpdate = () => {
+    fetch('/IoT')
+    .then((response) => response.json())
+    .then((data) => this.setState({ data }))
+  }
+
+  componentDidMount() {
+    this.onUpdate()
+  }
+
+  async handleClick(id,state) {
     let getURL = '/IoT/' + id + '/state/' + !state
+    await axios.get(getURL)
+    this.onUpdate()
   }
 
   render() {
-    let {rowData} = this.props
     return (
       <tbody>
         {
-          rowData.map((data,key) =>
+          this.state.data.map((data,key) =>
             <tr key={key}>
               <td>
                 <h4 className="ui image header">

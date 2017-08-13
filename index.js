@@ -3,16 +3,15 @@ const path = require('path')
 const data = require('./datastore')
 const nocache = require('nocache')
 
-
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 4001
 
 const app = express()
-app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname)));
 app.use(nocache())
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'))
-})
+    res.sendFile(path.join(__dirname, '/portal/build', 'index.html'));
+});
 
 app.get('/IoT', function (req, res) {
     res.json(data.findAll())
