@@ -16,7 +16,7 @@ let IoT = [
     {
         "img": "https://semantic-ui.com/images/avatar2/small/matthew.png",
         "name": "Light",
-        "description": "Living room",
+        "description": "Hall",
         "state": true,
         "value": "-"
     },
@@ -37,16 +37,16 @@ let IoT = [
     {
         "img": "https://semantic-ui.com/images/avatar2/small/lindsay.png",
         "name": "Air",
-        "description": "Living room",
+        "description": "Hall",
         "state": false,
         "value": "27 C"
     },
     {
         "img": "https://semantic-ui.com/images/avatar2/small/mark.png",
         "name": "TV",
-        "description": "Living room",
+        "description": "Hall",
         "state": true,
-        "value": "Channel 3"
+        "value": "Ch 3"
     },
     {
       "img": "https://semantic-ui.com/images/avatar2/small/mark.png",
