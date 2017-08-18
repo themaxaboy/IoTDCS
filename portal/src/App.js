@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header'
-import Table from './Table'
+import TableData from './TableData'
 import BtnAdd from './BtnAdd'
 import BtnDel from './BtnDel'
 
@@ -16,7 +16,7 @@ class App extends Component {
               <p></p>
               <p></p>
               <p></p>
-              <Table/>
+              <TableData/>
               <BtnAdd/>
               <BtnDel/>
               </center>
