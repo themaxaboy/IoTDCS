@@ -15,7 +15,6 @@ class App extends Component {
               <center>
               <p></p>
               <p></p>
-              <p></p>
               <TableData/>
               <BtnAdd/>
               <BtnDel/>

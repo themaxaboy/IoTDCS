@@ -14,9 +14,7 @@ class TableData extends Component {
             <Table.HeaderCell>Controller</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Tbody/>
-
       </Table>
     );
   }

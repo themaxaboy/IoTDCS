@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import { defaults } from 'react-chartjs-2';
-import { Header, Image, Table } from 'semantic-ui-react'
+import { Header, Image, Table, Loader } from 'semantic-ui-react'
 
 defaults.global.legend.display = false;
 
@@ -97,12 +97,12 @@ class Tbody extends Component {
           </Table.Row>
         )}
         {this.state.data[0] == undefined ? (
-          <tr>
-            <th colSpan={4}><br />
-              <div className="ui active centered inline loader"></div>
+          <Table.Row>
+            <Table.Cell colSpan='4'>
+                <Loader active inline='centered' />
               <p></p>
-            </th>
-          </tr>
+              </Table.Cell>
+          </Table.Row>
         ) : (<div></div>)
         }
       </Table.Body>
