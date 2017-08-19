@@ -5,7 +5,7 @@ import { Header, Table } from 'semantic-ui-react'
 class TableData extends Component {
   render() {
     return (
-      <Table basic='very' celled collapsing>
+      <Table basic='very' celled collapsing unstackable='true'>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>IoT Name</Table.HeaderCell>
