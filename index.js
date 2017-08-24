@@ -8,13 +8,13 @@ const port = process.env.PORT || 4000
 
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname)));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname)))
 app.use(nocache())
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/portal/build', 'index.html'));
-});
+    res.sendFile(path.join(__dirname, '/portal/build', 'index.html'))
+})
 
 app.get('/IoT', function (req, res) {
     res.json(datastore.findAll())
@@ -55,8 +55,46 @@ app.post('/IoT/value/set', function(req, res) {
     let id = req.body.id
     let value = req.body.value
     res.send(datastore.setValueById(id,value))
-});
+})
 
 app.listen(port, function () {
     console.log('Starting IoTDCS on port ' + port)
 })
+
+/*********************************************** */
+
+const mosca = require('mosca')
+
+const ascoltatore = {
+  //using ascoltatore
+  type: 'mongo',		
+  url: process.env.PORT.MONGODB_URI,
+  pubsubCollection: 'ascoltatori',
+  mongo: {}
+}
+
+const moscaSettings = {
+  port: 1883,
+  backend: ascoltatore,
+  persistence: {
+    factory: mosca.persistence.Mongo,
+    url: process.env.PORT.MONGODB_URI
+  }
+}
+
+const server = new mosca.Server(moscaSettings)
+server.on('ready', setup)
+
+server.on('clientConnected', function(client) {
+	console.log('client connected', client.id)		
+})
+
+// fired when a message is received
+server.on('published', function(packet, client) {
+  console.log('Published', packet.payload)
+})
+
+// fired when the mqtt server is ready
+function setup() {
+  console.log('Mosca server is up and running on port 1883')
+}

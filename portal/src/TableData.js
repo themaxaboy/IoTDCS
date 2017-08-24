@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import Tbody from './Tbody'
-import { Header, Table } from 'semantic-ui-react'
+import React, { Component } from "react";
+import Tbody from "./Tbody";
+import { Header, Table } from "semantic-ui-react";
 
 class TableData extends Component {
   render() {
     return (
-      <Table basic='very' celled collapsing unstackable='true'>
+      <Table basic="very" celled collapsing unstackable="true">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>IoT Name</Table.HeaderCell>
@@ -14,7 +14,7 @@ class TableData extends Component {
             <Table.HeaderCell>Controller</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        <Tbody/>
+        <Tbody />
       </Table>
     );
   }
