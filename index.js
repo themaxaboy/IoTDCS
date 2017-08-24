@@ -64,7 +64,7 @@ app.listen(port, function() {
 /*********************************************** */
 
 const mosca = require("mosca");
-const portmqtt = (process.env.PORT + 1) || 1883;
+const portmqtt = (port+1) || 1883;
 
 const ascoltatore = {
   //using ascoltatore
@@ -75,7 +75,7 @@ const ascoltatore = {
 };
 
 const moscaSettings = {
-  port: portmqtt,
+  port: parseInt(portmqtt),
   backend: ascoltatore,
   persistence: {
     factory: mosca.persistence.Mongo,
