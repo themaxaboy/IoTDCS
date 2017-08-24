@@ -63,8 +63,8 @@ app.listen(port, function() {
 
 /*********************************************** */
 
-const mosca = require("mosca")
-const portmqtt = 1883
+const mosca = require("mosca");
+const portmqtt = (process.env.PORT + 1) || 1883;
 
 const ascoltatore = {
   //using ascoltatore
