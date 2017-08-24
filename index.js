@@ -63,13 +63,13 @@ app.listen(port, function() {
 
 /*********************************************** */
 
-const mosca = require("mosca");
-const portmqtt = process.env.PORT || 1883;
+const mosca = require("mosca")
+const portmqtt = process.env.PORT + 1 || 1883
 
 const ascoltatore = {
   //using ascoltatore
   type: "mongo",
-  url: process.env.PORT.MONGODB_URI,
+  url: process.env.MONGODB_URI,
   pubsubCollection: "ascoltatori",
   mongo: {}
 };
@@ -79,7 +79,7 @@ const moscaSettings = {
   backend: ascoltatore,
   persistence: {
     factory: mosca.persistence.Mongo,
-    url: process.env.PORT.MONGODB_URI
+    url: process.env.MONGODB_URI
   }
 };
 
